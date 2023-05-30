@@ -24,7 +24,7 @@ choco install -y vcredist2015
 git clone https://github.com/m5stack/Core2-for-AWS-IoT-EduKit.git
 
 # Install VSCode extension
-vscode.exe --install-extension platformio.platformio-ide
+code --install-extension platformio.platformio-ide
 
 # Serial UART Driver
 ((new-object net.webclient).DownloadString("https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip", "CP210x_Universal_Windows_Driver.zip"))
