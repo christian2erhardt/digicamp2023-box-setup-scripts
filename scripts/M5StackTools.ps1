@@ -24,7 +24,22 @@ choco install -y vcredist2015
 git clone https://github.com/m5stack/Core2-for-AWS-IoT-EduKit.git
 
 # Install VSCode extension
-code --install-extension platformio.platformio-ide
+
+$extensions = 
+"platformio.platformio-ide"
+
+$cmd = "code --list-extensions"
+Invoke-Expression $cmd -OutVariable output | Out-Null
+$installed =$output -split "\s"
+
+foreach ($ext in $extensions) {
+  if ($installed.Contains($ext)) {
+    Write-Host $ext "already installed." -ForegroundColor Green
+  } else {
+    Write-Host "Installing" $ext "..." -ForegroundColor Yellow
+    code --install-extension $ext
+  }
+}
 
 # Serial UART Driver
 ((new-object net.webclient).DownloadFile("https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip", "CP210x_Universal_Windows_Driver.zip"))
