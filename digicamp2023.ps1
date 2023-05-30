@@ -31,4 +31,4 @@ executeScript "M5StackTools.ps1";
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate -acceptEula
+Install-WindowsUpdate -AcceptAll 
