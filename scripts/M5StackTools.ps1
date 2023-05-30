@@ -45,16 +45,16 @@ Import-Module BitsTransfer
 
 # Serial UART Driver
 Start-BitsTransfer -Source "https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip" -Destination CP210x_Universal_Windows_Driver.zip
-7z x CP210x_Universal_Windows_Driver.zip
+7z x CP210x_Universal_Windows_Driver.zip -o*
 
 cd CP210x_Universal_Windows_Driver
 PNPUtil.exe /add-driver silabser.inf /install
-cd ..
+cd $env:USERPROFILE\desktop\DigiCamp2023
 
 # M5 Burner
 Start-BitsTransfer -Source "https://m5burner.m5stack.com/app/M5Burner-v3-beta-win-x64.zip" -Destination M5Burner-v3-beta-win-x64.zip
-7z x M5Burner-v3-beta-win-x64.zip
+7z x M5Burner-v3-beta-win-x64.zip -o*
 
 # UIFlow
 Start-BitsTransfer -Source "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/UIFlow-Desktop-IDE.zip" -Destination UIFlow-Desktop-IDE.zip
-7z x UIFlow-Desktop-IDE.zip
+7z x UIFlow-Desktop-IDE.zip -o*
