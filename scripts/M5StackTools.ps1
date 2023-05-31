@@ -59,4 +59,4 @@ Start-BitsTransfer -Source "https://m5burner.m5stack.com/app/M5Burner-v3-beta-wi
 Start-BitsTransfer -Source "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/UIFlow-Desktop-IDE.zip" -Destination UIFlow-Desktop-IDE.zip
 7z x UIFlow-Desktop-IDE.zip -o*
 
-Enable-WindowsOptionalFeature –Online –FeatureName NetFx3 –All
+Enable-WindowsOptionalFeature -Online -FeatureName NetFx3 -All
