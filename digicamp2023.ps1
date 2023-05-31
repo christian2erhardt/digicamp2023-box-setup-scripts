@@ -1,6 +1,8 @@
 # Description: Boxstarter Script
-# Author: Microsoft
-# Common dev settings for desktop app development
+# Author: Christian Erhardt
+# Common dev settings for M5 stack development
+
+If ($Boxstarter.StopOnPackageFailure) { $Boxstarter.StopOnPackageFailure = $false }
 
 Disable-UAC
 
@@ -15,11 +17,19 @@ $helperUri = $helperUri.Substring(0, $helperUri.LastIndexOf("/"))
 $helperUri += "/scripts"
 write-host "helper script base URI is $helperUri"
 
+function drawLine { Write-Host '------------------------------' }
+
 function executeScript {
     Param ([string]$script)
+	drawLine;
     write-host "executing $helperUri/$script ..."
-	iex ((new-object net.webclient).DownloadString("$helperUri/$script"))
+	Invoke-Expression ((New-Object net.webclient).DownloadString("$helperUri/$script")) -ErrorAction Continue
+	drawLine;
+	RefreshEnv;
+	Start-Sleep -Seconds 1;
 }
+
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 
 #--- Setting up Windows ---
 executeScript "SystemConfiguration.ps1";
@@ -28,7 +38,9 @@ executeScript "FileExplorerSettings.ps1";
 executeScript "CommonDevTools.ps1";
 executeScript "M5StackTools.ps1";
 
+choco install -y awscli
+
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate -AcceptAll 
+Install-WindowsUpdate
