@@ -39,8 +39,9 @@ executeScript "CommonDevTools.ps1";
 executeScript "M5StackTools.ps1";
 
 choco install -y awscli
+choco install -y arduino
 
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate
+Install-WindowsUpdate -AcceptEula
