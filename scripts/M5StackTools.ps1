@@ -62,7 +62,7 @@ cd $env:USERPROFILE\desktop\DigiCamp2023
 #Start-BitsTransfer -Source "https://m5burner.m5stack.com/app/M5Burner-v3-beta-win-x64.zip" -Destination M5Burner-v3-beta-win-x64.zip
 if (Test-Path -Path M5Burner-v3-beta-win-x64 -eq $False) {
   Invoke-WebRequest -Uri https://m5burner.m5stack.com/app/M5Burner-v3-beta-win-x64.zip -OutFile M5Burner-v3-beta-win-x64.zip -UseBasicParsing
-  7z x M5Burner-v3-beta-win-x64.zip -aos*
+  7z x M5Burner-v3-beta-win-x64.zip -o*
   del M5Burner-v3-beta-win-x64.zip
 }
 
