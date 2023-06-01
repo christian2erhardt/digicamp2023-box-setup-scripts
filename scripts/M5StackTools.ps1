@@ -21,7 +21,9 @@ pip install matplotlib
 choco install -y vcredist2015
 
 # Clone Repo
-git clone https://github.com/m5stack/Core2-for-AWS-IoT-EduKit.git
+if (Test-Path -Path Core2-for-AWS-IoT-EduKit -eq "False") {
+  git clone https://github.com/m5stack/Core2-for-AWS-IoT-EduKit.git
+}
 
 # Install VSCode extension
 
@@ -46,7 +48,7 @@ foreach ($ext in $extensions) {
 # Serial UART Driver
 #Start-BitsTransfer -Source "https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip" -Destination CP210x_Universal_Windows_Driver.zip
 
-if (Test-Path -Path CP210x_Universal_Windows_Driver -eq False) {
+if (Test-Path -Path CP210x_Universal_Windows_Driver -eq "False") {
   Invoke-WebRequest -Uri https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip -OutFile CP210x_Universal_Windows_Driver.zip -UseBasicParsing
   7z x CP210x_Universal_Windows_Driver.zip -o*
   cd CP210x_Universal_Windows_Driver
@@ -58,14 +60,14 @@ cd $env:USERPROFILE\desktop\DigiCamp2023
 
 # M5 Burner
 #Start-BitsTransfer -Source "https://m5burner.m5stack.com/app/M5Burner-v3-beta-win-x64.zip" -Destination M5Burner-v3-beta-win-x64.zip
-if (Test-Path -Path M5Burner-v3-beta-win-x64 -eq False) {
+if (Test-Path -Path M5Burner-v3-beta-win-x64 -eq "False") {
   Invoke-WebRequest -Uri https://m5burner.m5stack.com/app/M5Burner-v3-beta-win-x64.zip -OutFile M5Burner-v3-beta-win-x64.zip -UseBasicParsing
   7z x M5Burner-v3-beta-win-x64.zip -aos*
   del M5Burner-v3-beta-win-x64.zip
 }
 
 # UIFlow
-if (Test-Path -Path UIFlow-Desktop-IDE -eq False) {
+if (Test-Path -Path UIFlow-Desktop-IDE -eq "False") {
   #Start-BitsTransfer -Source "https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/UIFlow-Desktop-IDE.zip" -Destination UIFlow-Desktop-IDE.zip
   Invoke-WebRequest -Uri https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/software/UIFlow-Desktop-IDE.zip -OutFile UIFlow-Desktop-IDE.zip -UseBasicParsing
   7z x UIFlow-Desktop-IDE.zip -o*
