@@ -44,4 +44,4 @@ choco install -y arduino
 #--- reenabling critial items ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate -AcceptEula
+#Install-WindowsUpdate -AcceptEula
